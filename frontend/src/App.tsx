@@ -11,18 +11,18 @@ import Test from "@/components/Test/Test";
 import Header from "@/components/pageUI/Header/Header"
 import MainPage from "@/pages/MainPage/MainPage";
 import NotFoundPage from "@/pages/NotFoundPage/NotFoundPage";
+import MainLayout from "@/layouts/MainLayout/MainLayout";
 
 const App = () => {
     return (
         <div>
             <Routes>
-                <Route path="/" element={<MainPage/>}/>
-                <Route path="*" element={<NotFoundPage/>}/>
+                {/*<Route path="/" element={<MainPage/>}/>*/}
 
                 // TODO delete
-                {/*<Route path="/" element={<MainLayout/>}>*/}
-                {/*    <Route index element={<ListSessionsPage/>}/>*/}
-
+                <Route path="/" element={<MainLayout/>}>
+                    <Route index element={<MainPage/>}/>
+                    <Route path="*" element={<NotFoundPage/>}/>
 
                     {/*<Route path="session/" element={<SessionLayout/>}>*/}
                     {/*    <Route path=":sessionId" element={<DetailSessionPage/>}/>*/}
@@ -33,7 +33,7 @@ const App = () => {
 
                     {/*<Route path="/about" element={<AboutPage/>}/>*/}
                     {/*<Route path="/login" element={<LoginPage/>}/>*/}
-                {/*</Route>*/}
+                </Route>
             </Routes>
         </div>
     );
