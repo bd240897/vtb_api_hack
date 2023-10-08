@@ -1,35 +1,42 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
+import './App.sass'
 
-function App() {
-  const [count, setCount] = useState(0)
+import {Route, Routes} from "react-router-dom";
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import Test from "@/components/Test/Test";
+import Header from "@/components/pageUI/Header/Header"
+import MainPage from "@/pages/MainPage/MainPage";
+import NotFoundPage from "@/pages/NotFoundPage/NotFoundPage";
 
-export default App
+const App = () => {
+    return (
+        <div>
+            <Routes>
+                <Route path="/" element={<MainPage/>}/>
+                <Route path="*" element={<NotFoundPage/>}/>
+
+                // TODO delete
+                {/*<Route path="/" element={<MainLayout/>}>*/}
+                {/*    <Route index element={<ListSessionsPage/>}/>*/}
+
+
+                    {/*<Route path="session/" element={<SessionLayout/>}>*/}
+                    {/*    <Route path=":sessionId" element={<DetailSessionPage/>}/>*/}
+                    {/*    <Route path=":sessionId/log" element={<LogSessionPage/>}/>*/}
+                    {/*</Route>*/}
+
+                    {/*/!*<Route path="/test" element={<TestPage/>}/>*!/*/}
+
+                    {/*<Route path="/about" element={<AboutPage/>}/>*/}
+                    {/*<Route path="/login" element={<LoginPage/>}/>*/}
+                {/*</Route>*/}
+            </Routes>
+        </div>
+    );
+};
+
+export default App;
