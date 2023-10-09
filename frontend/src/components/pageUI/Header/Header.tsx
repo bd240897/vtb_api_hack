@@ -21,7 +21,7 @@ import {Link} from "react-router-dom";
 const Header = () => {
     return (
 <>
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{}}>
             <AppBar position="static">
                 <Toolbar>
                     <IconButton
