@@ -1,4 +1,3 @@
-import React from 'react';
 import {
     AppBar,
     Box,
@@ -6,14 +5,22 @@ import {
     Typography,
     Button,
     IconButton,
+    Divider,
+    Paper,
+    MenuList,
+    MenuItem,
+    ListItemText,
+    ListItemIcon,
 } from '@mui/material';
 
 import MenuIcon from '@mui/icons-material/Menu';
 
+import {Link} from "react-router-dom";
 
 
 const Header = () => {
     return (
+<>
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar>
@@ -26,13 +33,28 @@ const Header = () => {
                     >
                         <MenuIcon />
                     </IconButton>
+
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        News
+                        <Link to="login/">login</Link>
                     </Typography>
+
+                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                        <Link to="register/">register</Link>
+                    </Typography>
+
+                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                        <Link to="auth/">auth</Link>
+                    </Typography>
+
+                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                        <Link to="list/">list</Link>
+                    </Typography>
+
                     <Button color="inherit">Login</Button>
                 </Toolbar>
             </AppBar>
         </Box>
+    </>
     );
 };
 

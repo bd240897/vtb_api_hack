@@ -12,27 +12,23 @@ import Header from "@/components/pageUI/Header/Header"
 import MainPage from "@/pages/MainPage/MainPage";
 import NotFoundPage from "@/pages/NotFoundPage/NotFoundPage";
 import MainLayout from "@/layouts/MainLayout/MainLayout";
+import LoginPage from "@/pages/LoginPage/LoginPage";
+import RegisterPage from "@/pages/RegisterPage/RegisterPage";
+import ListPaymentsPage from "@/pages/ListPaymentsPage/ListPaymentsPage";
+import AuthPage from "@/pages/AuthPage/AuthPage";
 
 const App = () => {
     return (
         <div>
             <Routes>
-                {/*<Route path="/" element={<MainPage/>}/>*/}
-
-                // TODO delete
                 <Route path="/" element={<MainLayout/>}>
                     <Route index element={<MainPage/>}/>
+                    <Route path="/login" element={<LoginPage/>}/>
+                    <Route path="/register" element={<RegisterPage/>}/>
+                    <Route path="/list" element={<ListPaymentsPage/>}/>
+                    <Route path="/auth" element={<AuthPage/>}/>
+
                     <Route path="*" element={<NotFoundPage/>}/>
-
-                    {/*<Route path="session/" element={<SessionLayout/>}>*/}
-                    {/*    <Route path=":sessionId" element={<DetailSessionPage/>}/>*/}
-                    {/*    <Route path=":sessionId/log" element={<LogSessionPage/>}/>*/}
-                    {/*</Route>*/}
-
-                    {/*/!*<Route path="/test" element={<TestPage/>}/>*!/*/}
-
-                    {/*<Route path="/about" element={<AboutPage/>}/>*/}
-                    {/*<Route path="/login" element={<LoginPage/>}/>*/}
                 </Route>
             </Routes>
         </div>

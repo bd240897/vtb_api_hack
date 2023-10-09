@@ -9,9 +9,11 @@ const MainPage = () => {
             <Container>
                 <Header/>
                 <Test/>
+
                 <Typography variant="h4" component="h1" gutterBottom>
                     Material UI Vite.js example in TypeScript
                 </Typography>
+
             </Container>
         </>
     );
