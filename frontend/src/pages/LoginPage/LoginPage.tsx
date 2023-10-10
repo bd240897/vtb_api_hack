@@ -7,7 +7,28 @@ import {LoginSchema} from "@/utils/yup";
 import {useNavigate} from "react-router-dom";
 import {TextField, Box, Button, Typography, Grid} from '@mui/material';
 
+const styleCss = {
+    buttonPrimary: {
+        backgroundColor: '#0077FF',
+        color: '#fff',
+        '&:hover': {
+            backgroundColor: '#fdff8f',
+            color: '#3c52b2',
+        },
+    },
+    buttonSecondary: {
+        backgroundColor: '#009FE0',
+        color: '#fff',
+        '&:hover': {
+            backgroundColor: '#fdff8f',
+            color: '#3c52b2',
+        },
+    },
+}
+
+
 const LoginPage = () => {
+
     const {
         register,
         formState: {errors},
@@ -32,26 +53,6 @@ const LoginPage = () => {
         <div className={style.root}>
             <div className={style.background}>
                 <Box px={3} py={2}>
-
-                    <Grid container spacing={1}>
-                        <Grid item sm={6}>
-                            <Button
-                                variant="contained"
-                                fullWidth
-                            >
-                                Вход
-                            </Button>
-                        </Grid>
-                        <Grid item sm={6}>
-                            <Button
-                                variant="contained"
-                                fullWidth
-                            >
-                                Регистрация
-                            </Button>
-                        </Grid>
-                    </Grid>
-
 
                     <Box
                         component="form"
@@ -79,6 +80,12 @@ const LoginPage = () => {
                                     error={!!errors.login}
                                     fullWidth
                                     className={style.input}
+                                    sx={{borderRadius: "10px"}}
+                                    InputProps={{
+                                        style: {
+                                            borderRadius: "10px",
+                                        }
+                                    }}
                                     {...register('login')}
                                 />
 
@@ -100,7 +107,12 @@ const LoginPage = () => {
                                     error={!!errors.password}
                                     fullWidth
                                     className={style.input}
-                                    sx={{mb: "20px"}}
+                                    sx={{mb: "20px", borderRadius: "10px"}}
+                                    InputProps={{
+                                        style: {
+                                            borderRadius: "10px",
+                                        }
+                                    }}
                                     {...register('password')}
                                 />
 
@@ -115,17 +127,28 @@ const LoginPage = () => {
                             <Button variant="contained"
                                     fullWidth
                                     type={"submit"}
-                                    className={classNames(style.buttonPrimary)}
+                                    // className={classNames(classes.button)}
+                                    // sx={{backgroundColor: 'neutral.main'}}
+                                    sx={styleCss.buttonPrimary}
                             >
                                 Войти
                             </Button>
                         </div>
 
+                        {/*TODO delete*/}
+                        {/*<Box sx={{backgroundColor: 'neutral.main'}}*/}
+                        {/*>*/}
+                        {/*    asdasdasd*/}
+                        {/*</Box>*/}
+
                     </Box>
+
+                    <Typography variant={'h5'} align={"center"} sx={{mb: 2}}>или</Typography>
 
                     <Button variant="contained"
                             fullWidth
                             className={classNames(style.buttonSecondary)}
+                            sx={styleCss.buttonSecondary}
                     >
                         Зарегистрироваться
                     </Button>
@@ -135,5 +158,6 @@ const LoginPage = () => {
         </div>
     );
 };
+
 
 export default LoginPage;
