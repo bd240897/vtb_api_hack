@@ -7,9 +7,16 @@ import {AppErrors} from "@/common/errors";
  */
 export const LoginSchema = yup.object().shape({
     login: yup.string()
-        .required(AppErrors.RequiredField)
-        .matches(/^.*.avp.ru$/, AppErrors.InvalidLogin),
-
+        .required(AppErrors.RequiredField),
     password: yup.string()
         .required(AppErrors.RequiredField)
+})
+
+export const RegisterSchema = yup.object().shape({
+    mail: yup.string()
+        .required(AppErrors.RequiredField),
+    password: yup.string()
+        .required(AppErrors.RequiredField),
+    passwordAgain: yup.string()
+        .required(AppErrors.RequiredField),
 })

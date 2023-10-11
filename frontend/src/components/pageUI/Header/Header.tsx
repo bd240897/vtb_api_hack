@@ -35,11 +35,7 @@ const Header = () => {
                     </IconButton>
 
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        <Link to="login/">login</Link>
-                    </Typography>
-
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        <Link to="register/">register</Link>
+                        <Link to="entry/">entry</Link>
                     </Typography>
 
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>

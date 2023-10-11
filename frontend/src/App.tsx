@@ -12,13 +12,10 @@ import Header from "@/components/pageUI/Header/Header"
 import MainPage from "@/pages/MainPage/MainPage";
 import NotFoundPage from "@/pages/NotFoundPage/NotFoundPage";
 import MainLayout from "@/layouts/MainLayout/MainLayout";
-import RegisterPage from "@/pages/RegisterPage/RegisterPage";
 import ListPaymentsPage from "@/pages/ListPaymentsPage/ListPaymentsPage";
 import AuthPage from "@/pages/AuthPage/AuthPage";
 
 // login
-import LoginPage from "@/pages/LoginPage/LoginPage";
-import TabPage from "@/pages/LoginPage/TabPage";
 
 // theme
 import {colors} from "@mui/material";
@@ -56,6 +53,7 @@ import {colors} from "@mui/material";
 // });
 
 import {createTheme, ThemeProvider, styled, Palette, Theme, ThemeOptions} from '@mui/material/styles';
+import EntryPage from "@/pages/LoginPage/EntryPage";
 
 // @ts-ignore
 const theme = createTheme({
@@ -82,11 +80,9 @@ const App = () => {
                     <Routes>
                         <Route path="/" element={<MainLayout/>}>
                             <Route index element={<MainPage/>}/>
-                            <Route path="/login" element={<LoginPage/>}/>
-                            <Route path="/register" element={<RegisterPage/>}/>
                             <Route path="/list" element={<ListPaymentsPage/>}/>
                             <Route path="/auth" element={<AuthPage/>}/>
-                            <Route path="/tab" element={<TabPage/>}/>
+                            <Route path="/entry" element={<EntryPage/>}/>
 
 
                             <Route path="*" element={<NotFoundPage/>}/>
