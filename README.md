@@ -1,11 +1,13 @@
-# Web приложение для оплаты комунальных платежей "ВТБ Коммуналка"
-Проект на хакатон API VTB 2023
+# Web приложение для оплаты комуналки через Api банка ВТБ
+Проект на хакатон VTB API 2023
 
 Команда: **Win+ners**
 
-## Демо:
-=
-[![Watch the video](./materials/prototype_preview.png)](https://youtu.be/aSgtn1f2SU4;)
+[comment]: <> (## Демо:)
+
+[comment]: <> (=)
+
+[comment]: <> ([![Watch the video]&#40;./materials/prototype_preview.jpg&#41;]&#40;https://youtu.be/o1A6QMTDYNQ;&#41;)
 
 ## Оглавление
 0. [Команда](#Команда)
@@ -28,35 +30,47 @@
 
 ## Задача
 ### Описание задачи
-Реализовать детектор заболеваний по фотографии poops для собак.
+Реализовать приложение для оплаты комуналки через Api банка ВТБ
 
 [:arrow_up:Оглавление](#Оглавление)
 
 ## Архитектура
-    python 3.8
-    backend - django rest framework
-    forntend - vue.js
-    database - sqlite3/ or PostgeSQL
+    backend
+    - python 3.10
+    - django 4.1
+    - django rest framework 3.1.0
+
+    forntend
+    - node v16.17.0
+    - npm 8.15.0
+    - react 18
+    - material 5.14
+
+    database
+    - sqlite3/ or PostgeSQL
 
 [:arrow_up:Оглавление](#Оглавление)
 
 ## Описание Backend
 
-Backend, реализованный на `Django`, нахоодится в папке `api`.
+Backend, реализованный на `framefork` `Django 4.1`, нахоодится в папке `backend`.
 Ниже представлены возможности нашего API
 
 ### документация к API
 
-##### `send photo`
-    method: POST
-    link: http://127.0.0.1:8000/api/v2/request/photo/quick/
-    data-parametrs: file: poop.jpg
+##### `get atms`
+    method: GET
+    link: http://127.0.0.1:8000/api/v1/atms/
+
+##### `get offices`
+    method: GET
+    link: http://127.0.0.1:8000/api/v1/offices/
 
 [:arrow_up:Оглавление](#Оглавление)
 
 ## Описание Frontend
 
-Нами был использован `framefork` `vue.js` для создания приложения.
+Нами был использован `framefork` `react 18` и сборщик `Vite` для создания приложения.
 
 [:arrow_up:Оглавление](#Оглавление)
 
@@ -86,11 +100,15 @@ https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-c
 
 ### 3. Запуск через Docker-compose
 https://webdevblog.ru/kak-ispolzovat-django-postgresql-i-docker/
-
-    git clone https://github.com/bd240897/kaspersky-hack
-    cd kaspersky-hack/
-    docker-compose -f docker-compose.back.yml up --build -d 
-    docker-compose -f docker-compose.front-nginx.yml up --build -d 
+    
+    # склонировать репу
+    git clone https://github.com/bd240897/more_tech_hack.git
+    # перейти в папку
+    cd more_tech_hack/
+    # установить в файле frontend/.env backend url и port (VITE_BACK_URL, VITE_BACK_PORT)
+    nano frontend/.env
+    # запустить проект
+    docker-compose up --build -d 
     
 [:arrow_up:Оглавление](#Оглавление)
 
@@ -99,35 +117,28 @@ https://webdevblog.ru/kak-ispolzovat-django-postgresql-i-docker/
 Размеченные шаблоны страниц для нашего приложения находятся в папке `templates`.
 В задании был использован `bootstrap` framework
 
-- **api** - Файлы для бэкенда (django)
-  - api - папка с настройками проекта
+- **backend/kos_web_ti** - Файлы для бэкенда (django, python 3.10)
+  - kos_web_ti - папка с настройками проекта
   - ...
-  - pet - приложение с логикой
-  - filter - приложение с фильтром входной картиной is_this_poop? 
-  - predictor - набор нейронок для предсказания болезней parasites & blood 
-    - ...
-  - example_data - тестовые данные для БД
-- **frontend** - Файлы для фронтенда (vue)
+  - api - приложение с логикой
+  - req.txt - зависимости проекта
+  - Dockerfile - докер файл для развертывания
+  - ...
+- **frontend** - Файлы для фронтенда (react 18 + Vite)
   - public - Общедоступные файлы
   - src - исходники
-- **html_templates** - сверстанные шаблоны
+  - .env - переменные окружения
 - **materials** - дополнительные материалы
-- **cnn_learning** - скрипты обучения нейронки
+- **scripts** - вспомогательные скрипты
 
 [:arrow_up:Оглавление](#Оглавление)
 
 ## Запуск
 Протестировать уже запущенный сайт можно по ссылке:</br>
 
-    http://84.201.135.220// (доступен на момент предоставления решения)
+    http://51.250.14.192:3000 (доступен на момент предоставления решения)
     # или
-    http://localhost:8080/ (доступен при создании локального проекта)
-
-Админы у админки джанги:
-- Логин: "amid", Пароль: "1"
-
-Пользователи:
-- Логин: "user1", Пароль: "1234qwerS+"
+    http://localhost:3000/ (доступен при создании локального проекта)
 
 [:arrow_up:Оглавление](#Оглавление)
 

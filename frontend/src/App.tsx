@@ -1,24 +1,25 @@
-import {useState} from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.sass'
 
 import {Route, Routes} from "react-router-dom";
 
 import * as React from 'react';
-import Button from '@mui/material/Button';
-import Test from "@/components/Test/Test";
-import Header from "@/components/pageUI/Header/Header"
-import MainPage from "@/pages/MainPage/MainPage";
+import {createTheme, ThemeProvider} from '@mui/material/styles';
+import {colors} from "@mui/material";
+
+// pages
 import NotFoundPage from "@/pages/NotFoundPage/NotFoundPage";
 import MainLayout from "@/layouts/MainLayout/MainLayout";
-import ListPaymentsPage from "@/pages/ListPaymentsPage/ListPaymentsPage";
-import AuthPage from "@/pages/AuthPage/AuthPage";
+import EntryPage from "@/pages/EntryPage/EntryPage";
+import AboutPage from "@/pages/AboutPage/AboutPage";
+import CreateWalletPage from "@/pages/CreateWalletPage/CreateWalletPage";
+import WalletLayout from "@/layouts/WalletLayout/WalletLayout";
+import PaperExamplePage from "@/pages/PaperExamplePage/PaperExamplePage";
+import WalletPage from "@/pages/WalletPage/WalletPage";
+import DetailWalletPage from "@/pages/DetailWalletPage/DetailWalletPage";
 
-// login
 
 // theme
-import {colors} from "@mui/material";
+
 
 // const { palette } = createTheme();
 // const theme = createTheme({
@@ -52,9 +53,8 @@ import {colors} from "@mui/material";
 //     }
 // });
 
-import {createTheme, ThemeProvider, styled, Palette, Theme, ThemeOptions} from '@mui/material/styles';
-import EntryPage from "@/pages/LoginPage/EntryPage";
 
+// TODO ts ignore
 // @ts-ignore
 const theme = createTheme({
     status: {
@@ -71,25 +71,37 @@ const theme = createTheme({
     }
 })
 
+import {UserContext} from "@/context/WalletExists/WalletExists";
+
 
 const App = () => {
+
+    const [isWallet, setIsWallet] = React.useState(false);
+
     return (
         <>
-            <ThemeProvider theme={theme}>
-                <div>
-                    <Routes>
-                        <Route path="/" element={<MainLayout/>}>
-                            <Route index element={<MainPage/>}/>
-                            <Route path="/list" element={<ListPaymentsPage/>}/>
-                            <Route path="/auth" element={<AuthPage/>}/>
-                            <Route path="/entry" element={<EntryPage/>}/>
+            <UserContext.Provider value={{value: isWallet, setValue: setIsWallet}}>
+                <ThemeProvider theme={theme}>
+                    <div>
+                        <Routes>
+                            <Route path="/" element={<MainLayout/>}>
+                                <Route index element={<EntryPage/>}/>
+                                <Route path="/about" element={<AboutPage/>}/>
+
+                                <Route path="/wallet" element={<WalletLayout/>}>
+                                    <Route index element={<WalletPage/>}/>
+                                    <Route path="create" element={<CreateWalletPage/>}/>
+                                    <Route path="example" element={<PaperExamplePage/>}/>
+                                    <Route path="detail" element={<DetailWalletPage/>}/>
+                                </Route>
 
 
-                            <Route path="*" element={<NotFoundPage/>}/>
-                        </Route>
-                    </Routes>
-                </div>
-            </ThemeProvider>
+                                <Route path="*" element={<NotFoundPage/>}/>
+                            </Route>
+                        </Routes>
+                    </div>
+                </ThemeProvider>
+            </UserContext.Provider>
         </>
     );
 };
